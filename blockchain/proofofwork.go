@@ -1,4 +1,4 @@
-package main
+package blockchain
 
 import (
 	"bytes"
@@ -12,7 +12,7 @@ var (
 	maxNonce = math.MaxInt64
 )
 
-const targetBits = 16
+const targetBits = 10
 
 // ProofOfWork represents a proof-of-work
 type ProofOfWork struct {
@@ -51,7 +51,7 @@ func (pow *ProofOfWork) Run() (int, []byte) {
 	var hash [32]byte
 	nonce := 0
 
-	fmt.Printf("Mining a new block")
+	fmt.Printf("Mining the block containing \n")
 	for nonce < maxNonce {
 		data := pow.prepareData(nonce)
 

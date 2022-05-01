@@ -1,12 +1,12 @@
-package main
+package blockchain
 
 import (
 	"fmt"
 	"log"
 )
 
-func (cli *CLI) listAddresses(nodeID string) {
-	wallets, err := NewWallets(nodeID)
+func (cli *CLI) listAddresses() {
+	wallets, err := NewWallets()
 	if err != nil {
 		log.Panic(err)
 	}

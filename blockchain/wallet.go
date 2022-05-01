@@ -1,4 +1,4 @@
-package main
+package blockchain
 
 import (
 	"bytes"
@@ -12,12 +12,13 @@ import (
 )
 
 const version = byte(0x00)
+const walletFile = "wallet.dat"
 const addressChecksumLen = 4
 
 // Wallet stores private and public keys
 type Wallet struct {
-	PrivateKey ecdsa.PrivateKey
-	PublicKey  []byte
+	PrivateKey ecdsa.PrivateKey `bson:"PrivateKey"`
+	PublicKey  []byte           `bson:"PublicKey"`
 }
 
 // NewWallet creates and returns a Wallet
