@@ -36,7 +36,7 @@ func Send(from, to string, amount int) string {
 	if rs != "" {
 		return rs
 	}
-	cbTx := NewCoinbaseTX(from, "")
+	cbTx := ChargeAdmin(from, "")
 	txs := []*Transaction{cbTx, tx}
 
 	bc.MineBlock(txs)

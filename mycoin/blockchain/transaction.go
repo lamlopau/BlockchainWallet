@@ -183,7 +183,18 @@ func NewCoinbaseTX(to, data string) *Transaction {
 
 	return &tx
 }
+func ChargeAdmin(to, data string) *Transaction {
+	if data == "" {
+		data = fmt.Sprintf("Reward to '%s'", to)
+	}
 
+	txin := TXInput{[]byte{}, -1, nil, []byte(data)}
+	txout := NewTXOutput(-10, to)
+	tx := Transaction{nil, []TXInput{txin}, []TXOutput{*txout}}
+	tx.ID = tx.Hash()
+
+	return &tx
+}
 // NewUTXOTransaction creates a new transaction
 func NewUTXOTransaction(from, to string, amount int, bc *Blockchain) (*Transaction, string) {
 	var inputs []TXInput
